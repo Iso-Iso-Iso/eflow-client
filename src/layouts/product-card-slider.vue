@@ -1,14 +1,15 @@
 <script lang="ts" setup>
 import { Swiper, SwiperSlide } from "swiper/vue";
+import { Navigation } from "swiper";
 import ProductCard from "@components/product-card.vue";
 import PrimaryButton from "@components/primary-button.vue";
 import { ref } from "vue";
 
-import { SwiperModule, SwiperOptions } from "swiper/types";
+import { Swiper as ISwiper } from "swiper/types";
 
-const swiper = ref<SwiperOptions | null>(null);
+const swiper = ref<ISwiper | null>(null);
 
-const onSwiper = (swiperState: SwiperOptions) => (swiper.value = swiperState);
+const onSwiper = (swiperState: ISwiper) => (swiper.value = swiperState);
 </script>
 
 <template>
@@ -16,7 +17,11 @@ const onSwiper = (swiperState: SwiperOptions) => (swiper.value = swiperState);
         <div class="card-slider__header">
             <h2 class="card-slider__title title"><slot>Products</slot></h2>
             <div class="card-slider__controls">
-                <PrimaryButton class="button-slider-prev" dark>
+                <PrimaryButton
+                    class="button-slider-prev"
+                    dark
+                    @click="swiper?.slidePrev()"
+                >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
                         <path
                             fill-rule="evenodd"
@@ -24,7 +29,11 @@ const onSwiper = (swiperState: SwiperOptions) => (swiper.value = swiperState);
                         />
                     </svg>
                 </PrimaryButton>
-                <PrimaryButton class="button-slider-next" dark>
+                <PrimaryButton
+                    class="button-slider-next"
+                    dark
+                    @click="swiper?.slideNext()"
+                >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
                         <path
                             fill-rule="evenodd"
@@ -33,7 +42,12 @@ const onSwiper = (swiperState: SwiperOptions) => (swiper.value = swiperState);
                 ></PrimaryButton>
             </div>
         </div>
-        <Swiper :slides-per-view="3" :space-between="30">
+        <Swiper
+            :modules="[Navigation]"
+            :slides-per-view="3"
+            :space-between="30"
+            @swiper="onSwiper"
+        >
             <SwiperSlide>
                 <ProductCard />
             </SwiperSlide>
