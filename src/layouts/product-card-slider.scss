@@ -1,0 +1,16 @@
+.card-slider {
+    &__header {
+        @include flex(space-between);
+        margin-bottom: 40px;
+    }
+
+    &__title {
+    }
+
+    &__controls {
+        @include flex;
+    }
+    &:deep(.button-slider-prev) {
+        margin-right: 15px;
+    }
+}

@@ -1,0 +1,32 @@
+.store-card {
+    max-width: 285px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    background: $primary-color;
+    @include transition;
+    &__img {
+        height: 160px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        overflow: hidden;
+    }
+    &__title {
+        color: $contrast-primary-color;
+        margin-bottom: 15px;
+    }
+    &__description,
+    &__price {
+        color: $contrast-primary-color;
+        margin-bottom: 15px;
+    }
+    &__description {
+        font-weight: $subtitle-weight;
+    }
+    &__controls {
+        @include flex(space-between);
+    }
+    &:hover {
+        background: $primary-color_light;
+    }
+}

@@ -2,16 +2,23 @@
 $main-font-family: "Roboto", sans-serif;
 
 // fonts sizes
-
+$text-fz: 16px;
+$item-title-fz: 21px;
+$title-fz: 28px;
 // font weight
 $title-weight: 700;
 
-$subtitle-weight: 400;
+$subtitle-weight: 300;
 
-$standart-font-weight: 300;
+$standart-font-weight: 400;
 // colors
 
-$primary-color: #ddf0a7;
+$secondary-color: #ddf0a7;
+$secondary-color_dark: #c1d575;
 
-$secondary-color: #162e3c;
-$secondary-color_light: #1f3847;
+$primary-color: #162e3c;
+$primary-color_light: #1f3847;
+
+$contrast-primary-color: white;
+
+$shadow: 0px 0px 25px 10px rgba(0, 0, 0, 0.144);
