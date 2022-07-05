@@ -1,7 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Explore from "@layouts/explore.vue";
+</script>
 
 <template>
     <RouterView />
+    <Explore />
 </template>
 
-<style></style>
+<style lang="scss" src="">
+//@import "@scss/main.scss";
+</style>
