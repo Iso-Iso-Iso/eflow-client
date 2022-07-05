@@ -5,6 +5,9 @@ const path = require("path");
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [vue()],
+    optimizeDeps: {
+        exclude: ["swiper/vue", "swiper/types"],
+    },
     resolve: {
         alias: {
             "@": path.resolve(__dirname, "src"),
