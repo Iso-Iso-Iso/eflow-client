@@ -1,0 +1,34 @@
+@import "@scss/main.scss";
+
+.services-redirect {
+  .container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ddf0a7;
+    height: 48px;
+    cursor: pointer;
+  }
+}
+
+.services-redirect__link { 
+    display: inline-block;
+    margin: 0 auto;
+  p{
+    font-family: 'Space Grotesk';
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 24px;
+    color: #162E3C;
+  } 
+}
+.services-redirect__link:hover {
+  a{
+    color: #5998c0;
+    text-decoration: underline;
+  } 
+}
+.services-redirect__close:hover *
+{ 
+  fill: #5998c0;
+}

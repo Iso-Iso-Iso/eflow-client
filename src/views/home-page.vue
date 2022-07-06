@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import ProductCardSlider from "@layouts/product-card-slider.vue";
-import Explore from "@layouts/explore.vue";
+import ServicesRedirect from "@layouts/services-redirect.vue";
 </script>
 
 <template>
     <div><ProductCardSlider /></div>
-    <div><Explore /></div>
+    <div><ServicesRedirect /></div>
 </template>
 <script setup lang="ts"></script>
 
