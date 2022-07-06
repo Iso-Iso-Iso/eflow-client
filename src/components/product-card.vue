@@ -14,17 +14,17 @@ const { dark } = toRefs(props);
 </script>
 
 <template>
-    <div :class="{ 'store-card_dark': dark }" class="store-card">
-        <div class="store-card__img img">
+    <div :class="{ 'product-card_dark': dark }" class="product-card">
+        <div class="product-card__img img">
             <img src="@assets/product-card-thumbnail.jpg" alt="" />
         </div>
-        <h3 class="store-card__title item-title">Title</h3>
-        <p class="store-card__price standart-text">4.00$</p>
-        <p class="store-card__description standart-text">
+        <h3 class="product-card__title item-title">Title</h3>
+        <p class="product-card__price standart-text">4.00$</p>
+        <p class="product-card__description standart-text">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
             fuga veritatis quas praesentium quam tempora?
         </p>
-        <div class="store-card__controls">
+        <div class="product-card__controls">
             <PrimaryButton>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
                     <path

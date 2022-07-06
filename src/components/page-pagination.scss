@@ -1,0 +1,11 @@
+.pagination {
+    margin-bottom: 30px;
+    @include flex;
+    &__page {
+        margin-right: 15px;
+        font-size: $text-fz;
+    }
+    &__button-prev {
+        margin-right: 15px;
+    }
+}

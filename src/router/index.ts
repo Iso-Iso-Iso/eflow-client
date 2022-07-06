@@ -3,6 +3,11 @@ import HomePage from "@views/home-page.vue";
 
 const routes: RouteRecordRaw[] = [
     { path: "/", component: HomePage, name: "home-page" },
+    {
+        path: "/shop",
+        component: () => import("@views/product/products-shop.vue"),
+        name: "product-shop",
+    },
 ];
 
 const router = createRouter({
