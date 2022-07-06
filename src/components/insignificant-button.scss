@@ -13,6 +13,12 @@
         color: $contrast-primary-color;
         fill: $contrast-primary-color;
     }
+    &_reverse {
+        flex-direction: row-reverse;
+        svg {
+            transform: rotate(180deg);
+        }
+    }
     &:hover {
         text-decoration: underline;
     }
