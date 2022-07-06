@@ -5,6 +5,9 @@ const path = require("path");
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [vue()],
+    optimizeDeps: {
+        exclude: ["swiper/vue", "swiper/types"],
+    },
     resolve: {
         alias: {
             "@": path.resolve(__dirname, "src"),
@@ -16,6 +19,14 @@ export default defineConfig({
             "@scss": path.resolve(__dirname, "src", "scss"),
             "@store": path.resolve(__dirname, "src", "store"),
             "@views": path.resolve(__dirname, "src", "views"),
+            "@interfaces": path.resolve(__dirname, "src", "interfaces"),
+        },
+    },
+    css: {
+        preprocessorOptions: {
+            scss: {
+                additionalData: `@import '@scss/global.scss';`,
+            },
         },
     },
 });
