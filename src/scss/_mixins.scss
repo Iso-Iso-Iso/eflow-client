@@ -1,4 +1,4 @@
-@import "@styles/variables";
+@import "@scss/variables";
 
 @mixin animation($name, $duration: 0.2s, $time-function: ease, $delay: 0s) {
     animation: #{$name} #{$duration} #{$time-function} #{$delay};

@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import Explore from "@layouts/explore.vue";
+import "swiper/css/bundle";
 </script>
 
 <template>
-    <RouterView />
-    <Explore />
+    <RouterLink :to="{ name: 'home-page' }">Домой</RouterLink>
+    <div class="container">
+        <RouterView />
+    </div>
 </template>
-
-<style lang="scss" src="">
-//@import "@scss/main.scss";
-</style>

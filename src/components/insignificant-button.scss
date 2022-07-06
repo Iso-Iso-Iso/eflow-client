@@ -1,0 +1,19 @@
+.button {
+    font-size: $text-fz;
+    font-weight: $title-weight;
+    color: $primary-color;
+    fill: $primary-color;
+    @include flex;
+    @include transition;
+    svg {
+        width: 18px;
+        height: 18px;
+    }
+    &_light {
+        color: $contrast-primary-color;
+        fill: $contrast-primary-color;
+    }
+    &:hover {
+        text-decoration: underline;
+    }
+}
