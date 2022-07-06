@@ -1,0 +1,28 @@
+.button {
+  padding: 5px 20px;
+  border-radius: 25px;
+  border: 3px solid #162E3C;
+  background: $contrast-primary-color;
+  color: $primary-color;
+  fill: $primary-color;
+  @include transition;
+
+  &:deep(svg) {
+    width: 25px;
+    height: 25px;
+  }
+
+  &:hover {
+    background: $secondary-color;
+  }
+
+  &_dark {
+    background: $primary-color;
+    color: $contrast-primary-color;
+    fill: $contrast-primary-color;
+
+    &:hover {
+      background: $primary-color_light;
+    }
+  }
+}
