@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import HeaderMain from "@layouts/header-main.vue";
 import "swiper/css/bundle";
 </script>
 
 <template>
-    <RouterLink :to="{ name: 'home-page' }">Домой</RouterLink>
+    <HeaderMain />
     <div class="container">
         <RouterView />
     </div>
