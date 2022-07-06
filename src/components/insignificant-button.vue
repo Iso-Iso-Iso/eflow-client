@@ -3,12 +3,16 @@ import { toRefs } from "vue";
 
 interface InsignificantButtonProps {
     light?: boolean;
+    reverse?: boolean;
 }
 const props = defineProps<InsignificantButtonProps>();
-const { light } = toRefs(props);
+const { light, reverse } = toRefs(props);
 </script>
 <template>
-    <button :class="{ button_light: light }" class="button">
+    <button
+        :class="{ button_light: light, button_reverse: reverse }"
+        class="button"
+    >
         <span>
             <slot>More</slot>
         </span>
