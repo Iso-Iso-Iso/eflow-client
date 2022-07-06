@@ -1,10 +1,10 @@
 <template>
-    <div class="services-redirect">
+    <div class="alerts-redirect">
         <div class="container">
-            <div class="services-redirect__link">
+            <div class="alerts-redirect__link">
                 <a>Explore all our services.</a>
             </div>
-            <a class="services-redirect__close">
+            <a class="alerts-redirect__close">
                 <svg
                     width="16"
                     height="16"
@@ -23,5 +23,5 @@
 </template>
 
 <style lang="scss" src="">
-@import "services-redirect.scss";
+@import "alerts-redirect.scss";
 </style>

@@ -5,5 +5,5 @@
 </template>
 
 <style lang="scss" src="">
-@import "header-nav.scss";
+@import "header-main.scss";
 </style>
