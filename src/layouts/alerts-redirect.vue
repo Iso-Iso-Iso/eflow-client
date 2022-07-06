@@ -22,6 +22,4 @@
     </div>
 </template>
 
-<style lang="scss" src="">
-@import "alerts-redirect.scss";
-</style>
+<style lang="scss" src="./alerts-redirect.scss"></style>

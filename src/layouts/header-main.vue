@@ -4,6 +4,4 @@
     </div>
 </template>
 
-<style lang="scss" src="">
-@import "header-main.scss";
-</style>
+<style lang="scss" src="./header-main.scss"></style>
