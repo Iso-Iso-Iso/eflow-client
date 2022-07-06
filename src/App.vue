@@ -4,10 +4,8 @@ import "swiper/css/bundle";
 
 <template>
     <RouterLink :to="{ name: 'home-page' }">Домой</RouterLink>
-
-    <div class="container">
+     <div class="container">
         <RouterView />
     </div>
 </template>
-
 <style lang="scss" src="@scss/main.scss"></style>
