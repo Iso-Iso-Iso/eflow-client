@@ -1,10 +1,7 @@
 <script lang="ts" setup>
 import { toRefs } from "vue";
+import { InsignificantButtonProps } from "@interfaces/button";
 
-interface InsignificantButtonProps {
-    light?: boolean;
-    reverse?: boolean;
-}
 const props = defineProps<InsignificantButtonProps>();
 const { light, reverse } = toRefs(props);
 </script>
