@@ -1,16 +1,13 @@
 <script lang="ts" setup>
 import { toRefs } from "vue";
-
-interface PrimaryButtonProps {
-    dark?: boolean;
-}
+import  { PrimaryButtonProps } from "@interfaces/button";
 
 const props = defineProps<PrimaryButtonProps>();
-const { dark } = toRefs(props);
+const { light } = toRefs(props);
 </script>
 
 <template>
-    <button :class="{ button_dark: dark }" class="button">
+    <button :class="{ button_light: light }" class="button">
         <slot>Отправить</slot>
     </button>
 </template>

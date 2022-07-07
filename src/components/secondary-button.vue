@@ -1,9 +1,6 @@
 <script lang="ts" setup>
 import { toRefs } from "vue";
-
-interface SecondaryButtonProps {
-    dark?: boolean;
-}
+import { SecondaryButtonProps } from "@interfaces/button";
 
 const props = defineProps<SecondaryButtonProps>();
 const { dark } = toRefs(props);
