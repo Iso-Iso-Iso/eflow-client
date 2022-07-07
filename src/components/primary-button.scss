@@ -12,12 +12,12 @@
     &:hover {
         background: $primary-color_light;
     }
-    &_dark {
-        background: $primary-color;
-        color: $contrast-primary-color;
-        fill: $contrast-primary-color;
+    &_light {
+        background: $secondary-color;
+        color: $primary-color;
+        fill: $primary-color;
         &:hover {
-            background: $primary-color_light;
+            background: $secondary-color_dark;
         }
     }
 }
