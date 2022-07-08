@@ -8,6 +8,11 @@ const routes: RouteRecordRaw[] = [
         component: () => import("@views/product/products-shop.vue"),
         name: "product-shop",
     },
+    {
+        path: "/product/:id",
+        component: () => import("@views/product/single-product.vue"),
+        name: "single-product",
+    },
 ];
 
 const router = createRouter({

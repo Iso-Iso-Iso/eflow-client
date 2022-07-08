@@ -1,0 +1,26 @@
+.prodcut-slider {
+    width: 380px;
+    height: 380px;
+
+    &__slide {
+        position: relative;
+    }
+    &__zoom-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: calc(380px * 4);
+        height: calc(380px * 4);
+        pointer-events: none;
+        display: none;
+    }
+    &__img {
+        width: 380px;
+        height: 380px;
+    }
+}
+
+.active-zoom {
+    display: block;
+    z-index: 2;
+}
