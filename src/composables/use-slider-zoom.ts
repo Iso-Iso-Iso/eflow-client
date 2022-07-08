@@ -1,8 +1,9 @@
-import { ref, onMounted, Ref } from "vue";
+import { ref, onMounted, Ref, watch, toRef } from "vue";
 interface SliderZoomConfig {
     zoomContainerClass?: string;
     activeZoomContainerClass?: string;
     triggerZoomElementClass?: string;
+    isZoomActive?: Ref<boolean>;
 }
 
 function useSliderZoom(
@@ -12,6 +13,8 @@ function useSliderZoom(
     const imgOffsetY = ref(0);
     const imgOffsetX = ref(0);
     const currentImageZoomContainer = ref<HTMLDivElement | null>(null);
+    const isZoomActive = toRef(sliderZoomConfig as any, "isZoomActive");
+    // const isZoomActive = sliderZoomConfig?.isZoomActive;
 
     const zoomContainerClass =
         sliderZoomConfig?.zoomContainerClass || "zoom-container";
@@ -21,31 +24,45 @@ function useSliderZoom(
     const triggerZoomElementClass =
         sliderZoomConfig?.triggerZoomElementClass || "zoom-trigger";
 
-    function updateImagePosition() {
-        if (!currentImageZoomContainer.value) return;
+    function renderZoomedImage() {
+        if (!currentImageZoomContainer.value || !isZoomActive?.value) return;
         let y = imgOffsetY.value;
         let x = imgOffsetX.value;
         // Zoom multiple size - 1
         y *= -3;
         x *= -3;
 
-        currentImageZoomContainer.value.style.transform = `translate(${x}px,${y}px)`;
+        currentImageZoomContainer.value!.style.transform = `translate(${x}px,${y}px)`;
 
-        window.requestAnimationFrame(updateImagePosition);
+        window.requestAnimationFrame(renderZoomedImage);
     }
+
+    function startMouseWatch() {
+        window.requestAnimationFrame(renderZoomedImage);
+
+        currentImageZoomContainer?.value?.classList.add(
+            activeZoomContainerClass
+        );
+    }
+    function stopMouseWatch() {
+        currentImageZoomContainer.value?.classList.remove(
+            activeZoomContainerClass
+        );
+    }
+
+    watch(isZoomActive, (newValue) =>
+        newValue ? startMouseWatch() : stopMouseWatch()
+    );
 
     function onMouseOver(event: MouseEvent, item: HTMLDivElement) {
         if (!event.target) return;
 
         const innerZoomContainer: HTMLDivElement | null =
             item.querySelector(zoomContainerClass);
-
-        if (!innerZoomContainer) return;
-
         currentImageZoomContainer.value = innerZoomContainer;
-        window.requestAnimationFrame(updateImagePosition);
 
-        innerZoomContainer.classList.add(activeZoomContainerClass);
+        if (!innerZoomContainer || !isZoomActive?.value) return;
+        startMouseWatch();
     }
 
     function onMouseLeave(event: MouseEvent, item: HTMLDivElement) {
@@ -53,8 +70,8 @@ function useSliderZoom(
         const innerZoomContainer = item.querySelector(zoomContainerClass);
         if (!innerZoomContainer) return;
 
+        stopMouseWatch();
         currentImageZoomContainer.value = null;
-        innerZoomContainer.classList.remove(activeZoomContainerClass);
     }
 
     function onMouseMove(event: MouseEvent) {

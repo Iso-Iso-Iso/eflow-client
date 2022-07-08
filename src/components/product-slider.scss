@@ -4,6 +4,7 @@
 
     &__slide {
         position: relative;
+        cursor: pointer;
     }
     &__zoom-container {
         position: absolute;
@@ -17,6 +18,9 @@
     &__img {
         width: 380px;
         height: 380px;
+    }
+    .swiper {
+        background: $primary-color;
     }
 }
 
