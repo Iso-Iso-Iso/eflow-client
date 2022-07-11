@@ -1,6 +1,5 @@
-.prodcut-slider {
+.prodcut-gallery {
     width: 380px;
-    height: 380px;
 
     &__slide {
         position: relative;
@@ -22,9 +21,48 @@
     .swiper {
         background: $primary-color;
     }
+    &__pagination {
+        max-width: 100px;
+
+        @include flex($flex-wrap: wrap);
+    }
 }
 
 .active-zoom {
     display: block;
     z-index: 2;
+}
+
+.product-thumbnails {
+    height: 360px;
+    width: 75px;
+    margin: 0 10px 10px 0;
+
+    &__img {
+        width: 75px;
+        cursor: pointer;
+    }
+    .swiper-wrapper {
+        width: 100%;
+    }
+}
+.product-thumbnails-wrapper {
+    @include flex($flex-direction: column);
+    .button {
+        width: 30px;
+        height: 30px;
+        padding: 0;
+        margin-right: 10px;
+        &:first-child {
+            margin-bottom: 10px;
+        }
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
+.product-slider-wrapper {
+    @include flex(flex-start);
 }
