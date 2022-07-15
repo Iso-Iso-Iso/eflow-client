@@ -1,0 +1,15 @@
+.single-product-info {
+    @include flex(space-evenly, flex-start);
+    .product-gallery-slider {
+        margin-right: 40px;
+    }
+    .standart-text {
+        margin-bottom: 40px;
+    }
+    .qty-counter {
+        margin-bottom: 40px;
+    }
+    .summary {
+        padding-top: 10px;
+    }
+}

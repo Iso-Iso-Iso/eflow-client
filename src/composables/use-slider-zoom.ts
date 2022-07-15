@@ -14,7 +14,6 @@ function useSliderZoom(
     const imgOffsetX = ref(0);
     const currentImageZoomContainer = ref<HTMLDivElement | null>(null);
     const isZoomActive = toRef(sliderZoomConfig as any, "isZoomActive");
-    // const isZoomActive = sliderZoomConfig?.isZoomActive;
 
     const zoomContainerClass =
         sliderZoomConfig?.zoomContainerClass || "zoom-container";
@@ -28,7 +27,7 @@ function useSliderZoom(
         if (!currentImageZoomContainer.value || !isZoomActive?.value) return;
         let y = imgOffsetY.value;
         let x = imgOffsetX.value;
-        // Zoom multiple size - 1
+        //* Zoom multiple size - 1
         y *= -3;
         x *= -3;
 
@@ -54,7 +53,7 @@ function useSliderZoom(
         newValue ? startMouseWatch() : stopMouseWatch()
     );
 
-    function onMouseOver(event: MouseEvent, item: HTMLDivElement) {
+    function onZoomEndTrack(event: Event, item: HTMLDivElement) {
         if (!event.target) return;
 
         const innerZoomContainer: HTMLDivElement | null =
@@ -65,7 +64,7 @@ function useSliderZoom(
         startMouseWatch();
     }
 
-    function onMouseLeave(event: MouseEvent, item: HTMLDivElement) {
+    function onZoomStartTrack(event: Event, item: HTMLDivElement) {
         if (!event.target) return;
         const innerZoomContainer = item.querySelector(zoomContainerClass);
         if (!innerZoomContainer) return;
@@ -78,6 +77,22 @@ function useSliderZoom(
         imgOffsetX.value = event.offsetX;
         imgOffsetY.value = event.offsetY;
     }
+    function onTouchMove(event: TouchEvent, trigger: HTMLDivElement) {
+        const rect = trigger.getBoundingClientRect();
+        const touch = event.touches[0];
+
+        const isTocuhXAbove = touch.clientX > rect.left + rect.width;
+        const isTocuhXBelow = touch.clientX < rect.left;
+
+        if (isTocuhXAbove || isTocuhXBelow) return;
+
+        const isTouchYAbove = touch.clientY > rect.top + rect.height;
+        const isTocuhYBelow = touch.clientY < rect.top;
+        if (isTouchYAbove || isTocuhYBelow) return;
+
+        imgOffsetX.value = touch.clientX - rect.left;
+        imgOffsetY.value = touch.clientY - rect.top;
+    }
 
     onMounted(() => {
         if (slidesForZoom.value.length == 0) return;
@@ -89,12 +104,22 @@ function useSliderZoom(
             if (!zoomTrigger) return;
 
             zoomTrigger.addEventListener("mouseover", (event: MouseEvent) =>
-                onMouseOver(event, e.$el)
+                onZoomEndTrack(event, e.$el)
+            );
+            zoomTrigger.addEventListener("touchstart", (event: TouchEvent) =>
+                onZoomEndTrack(event, e.$el)
             );
             zoomTrigger.addEventListener("mouseout", (event: MouseEvent) =>
-                onMouseLeave(event, e.$el)
+                onZoomStartTrack(event, e.$el)
+            );
+            zoomTrigger.addEventListener("touchend", (event: TouchEvent) =>
+                onZoomStartTrack(event, e.$el)
             );
             zoomTrigger.addEventListener("mousemove", onMouseMove);
+
+            zoomTrigger.addEventListener("touchmove", (e: TouchEvent) =>
+                onTouchMove(e, zoomTrigger)
+            );
         });
     });
 }

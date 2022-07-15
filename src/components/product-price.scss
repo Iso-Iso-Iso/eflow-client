@@ -1,0 +1,14 @@
+.product-price-info {
+    margin-bottom: 20px;
+    @include flex(flex-start);
+    > :deep(*) {
+        margin-right: 10px;
+    }
+    :deep(.price) {
+        font-size: $item-title-fz;
+        font-weight: $title-weight;
+    }
+    :deep(.available-quantity) {
+        @extend %standart-text;
+    }
+}

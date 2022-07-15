@@ -5,6 +5,7 @@
     color: $contrast-primary-color;
     fill: $contrast-primary-color;
     @include transition;
+    @include flex;
     &:deep(svg) {
         width: 25px;
         height: 25px;

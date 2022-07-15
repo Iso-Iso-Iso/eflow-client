@@ -1,0 +1,21 @@
+.qty-counter {
+    @include flex(flex-start);
+    &__input {
+        font-size: $text-fz;
+        width: 70px;
+        text-align: center;
+        border-bottom: 1px solid $primary-color;
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            /* display: none; <- Crashes Chrome on hover */
+            -webkit-appearance: none;
+            margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+        }
+
+        -moz-appearance: textfield; /* Firefox */
+        margin-right: 10px;
+    }
+    .button {
+        margin-right: 10px;
+    }
+}
