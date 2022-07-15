@@ -19,9 +19,11 @@ const { price, availableQuantity } = toRefs(props);
 
 <template>
     <div class="product-price-info">
-        <p class="price">{{ price }}$</p>
-        <span> - </span>
-        <p class="available-quantity">{{ availableQuantity }} available</p>
+        <p v-show="price > 0" class="price">{{ price }}$</p>
+        <span v-show="price > 0 && availableQuantity > 0"> - </span>
+        <p v-show="availableQuantity > 0" class="available-quantity">
+            {{ availableQuantity }} available
+        </p>
     </div>
 </template>
 
