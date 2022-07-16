@@ -19,7 +19,6 @@ const onSwiper = (swiperState: ISwiper) => (swiper.value = swiperState);
             <div class="card-slider__controls">
                 <PrimaryButton
                     class="button-slider-prev"
-                    dark
                     @click="swiper?.slidePrev()"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
@@ -31,7 +30,6 @@ const onSwiper = (swiperState: ISwiper) => (swiper.value = swiperState);
                 </PrimaryButton>
                 <PrimaryButton
                     class="button-slider-next"
-                    dark
                     @click="swiper?.slideNext()"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">

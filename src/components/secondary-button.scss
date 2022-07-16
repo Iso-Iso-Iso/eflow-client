@@ -17,12 +17,12 @@
   }
 
   &_dark {
-    background: $primary-color;
-    color: $contrast-primary-color;
-    fill: $contrast-primary-color;
+    background: $secondary-color;
+    color: $primary-color;
+    fill: $primary-color;
 
     &:hover {
-      background: $primary-color_light;
+      background: $secondary-color_dark;
     }
   }
 }

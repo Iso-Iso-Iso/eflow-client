@@ -2,6 +2,21 @@
 import PrimaryButton from "@components/primary-button.vue";
 import SecondaryButton from "@components/secondary-button.vue";
 </script>
+<script lang="ts">
+export default {
+    data() {
+        return {
+            isActive: false,
+        };
+    },
+    methods: {
+        activateMenu: function () {
+            this.isActive = !this.isActive;
+        },
+    },
+};
+</script>
+
 <template>
     <div class="navigation">
         <div class="container">
@@ -14,12 +29,19 @@ import SecondaryButton from "@components/secondary-button.vue";
                 </svg>
                 <p>Logo</p>
             </div>
-            <nav class="navigation__nav">
+            <div
+                @click="activateMenu"
+                v-bind:class="{ _active: isActive }"
+                class="navigation__burger-icon"
+            >
+                <span v-bind:class="{ _active: isActive }"></span>
+            </div>
+            <nav v-bind:class="{ _active: isActive }" class="navigation__nav">
                 <ul class="navigation__links">
-                    <li>Our Story</li>
-                    <li>Blog</li>
-                    <li>Contact</li>
-                    <li>Pricing</li>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Pricing</a></li>
                     <SecondaryButton class="navigation__login"
                         >Log in</SecondaryButton
                     >
