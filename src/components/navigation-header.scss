@@ -158,3 +158,11 @@
 
   }
 }
+@media (max-width: 627px){
+  .navigation {
+    &__nav {
+        width: 100%;
+        box-shadow: 0 0 0 0, 0 0 0 0;
+      }
+  }
+}
