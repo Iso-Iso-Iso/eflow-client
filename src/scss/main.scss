@@ -117,3 +117,12 @@ html {
 .relative {
     position: relative;
 }
+.swiper-pagination-bullet-active {
+    background: $primary-color;
+}
+.swiper-slide-thumb-active {
+    img {
+        @include transition;
+        transform: scale(0.9);
+    }
+}

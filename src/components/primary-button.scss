@@ -5,6 +5,7 @@
     color: $contrast-primary-color;
     fill: $contrast-primary-color;
     @include transition;
+    @include flex;
     &:deep(svg) {
         width: 25px;
         height: 25px;
@@ -12,7 +13,7 @@
     &:hover {
         background: $primary-color_light;
     }
-    &_light {
+&_light {
         background: $secondary-color;
         color: $primary-color;
         fill: $primary-color;
