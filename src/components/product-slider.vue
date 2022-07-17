@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Thumbs, Pagination } from "swiper";
-import { Swiper as SwiperType } from "swiper/types";
+import { Swiper as SwiperType, SwiperOptions } from "swiper/types";
 import { ref, watch } from "vue";
 import useSliderZoom from "@composables/use-slider-zoom";
 import LabelButtom from "@components/label-button.vue";
@@ -29,6 +29,15 @@ useSliderZoom(imgSlides, {
     triggerZoomElementClass: ".prodcut-gallery__img",
     isZoomActive,
 });
+type SwiperBreackpoints = { [key: number]: SwiperOptions };
+
+const swiperSetupBreackpoints: SwiperBreackpoints = {
+    510: {
+        direction: "vertical",
+    },
+    375: { direction: "horizontal", slidesPerView: 3.5 },
+    0: { direction: "horizontal", slidesPerView: 2.5 },
+};
 </script>
 
 <template>
@@ -41,6 +50,7 @@ useSliderZoom(imgSlides, {
                 :slides-per-view="4"
                 :space-between="15"
                 :modules="[Thumbs]"
+                :breakpoints="swiperSetupBreackpoints"
                 direction="vertical"
                 class="product-thumbnails"
                 @swiper="onThumbsSwiper"

@@ -1,7 +1,17 @@
 .single-product-info {
     @include flex(space-evenly, flex-start);
+    @media screen and(max-width:768px) {
+        flex-direction: column;
+        align-items: center;
+    }
     .product-gallery-slider {
         margin-right: 40px;
+        @media screen and(max-width:768px) {
+            margin-right: 0;
+        }
+        @media screen and(max-width:510px) {
+            width: 100%;
+        }
     }
     .standart-text {
         margin-bottom: 40px;
