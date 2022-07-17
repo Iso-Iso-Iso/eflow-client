@@ -46,19 +46,7 @@ const onSwiper = (swiperState: ISwiper) => (swiper.value = swiperState);
             :space-between="30"
             @swiper="onSwiper"
         >
-            <SwiperSlide>
-                <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-                <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-                <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-                <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
+            <SwiperSlide v-for="(item, index) in 5" :key="index">
                 <ProductCard />
             </SwiperSlide>
         </Swiper>
