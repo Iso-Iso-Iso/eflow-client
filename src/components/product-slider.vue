@@ -2,16 +2,20 @@
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Thumbs, Pagination } from "swiper";
 import { Swiper as SwiperType, SwiperOptions } from "swiper/types";
-import { ref, watch } from "vue";
+import { ref, toRef, watch } from "vue";
 import useSliderZoom from "@composables/use-slider-zoom";
 import LabelButtom from "@components/label-button.vue";
 import PrimaryButton from "@components/primary-button.vue";
+import { ProductSliderProps } from "@interfaces/product";
 
 const isZoomActive = ref(false);
 const imgSlides = ref<any | null>(null);
 const swiperGalleryEntity = ref<SwiperType | null>(null);
 const swiperThumbsEntity = ref<SwiperType | null>(null);
 const swiperPagination = ref(null);
+
+const props = defineProps<ProductSliderProps>();
+const gallery = toRef(props, "gallery");
 
 const onGallerySwiper = (swiper: SwiperType) =>
     (swiperGalleryEntity.value = swiper);
@@ -29,6 +33,7 @@ useSliderZoom(imgSlides, {
     triggerZoomElementClass: ".prodcut-gallery__img",
     isZoomActive,
 });
+
 type SwiperBreackpoints = { [key: number]: SwiperOptions };
 
 const swiperSetupBreackpoints: SwiperBreackpoints = {
@@ -55,9 +60,9 @@ const swiperSetupBreackpoints: SwiperBreackpoints = {
                 class="product-thumbnails"
                 @swiper="onThumbsSwiper"
             >
-                <SwiperSlide v-for="(item, index) of 7" :key="index">
+                <SwiperSlide v-for="(item, index) of gallery" :key="index">
                     <div class="product-thumbnails__img img">
-                        <img src="@assets/product-card-thumbnail.jpg" alt="" />
+                        <img :src="item.image" alt="" />
                     </div>
                 </SwiperSlide>
             </Swiper>
@@ -69,26 +74,22 @@ const swiperSetupBreackpoints: SwiperBreackpoints = {
         <div class="prodcut-gallery">
             <Swiper
                 :modules="[Thumbs, Pagination]"
-                :pagination="{ el: swiperPagination }"
+                :pagination="{ el: swiperPagination, type: 'fraction' }"
                 :thumbs="{ swiper: swiperThumbsEntity }"
                 @swiper="onGallerySwiper"
             >
                 <SwiperSlide
-                    v-for="(item, index) of 7"
+                    v-for="(item, index) of gallery"
                     ref="imgSlides"
                     :key="index"
                     class="prodcut-gallery__slide"
                     @click="isZoomActive = !isZoomActive"
                 >
                     <div class="prodcut-gallery__zoom-container img">
-                        <img src="@assets/product-card-thumbnail.jpg" alt="" />
+                        <img :src="item.image" />
                     </div>
                     <div class="img prodcut-gallery__img">
-                        <img
-                            class=""
-                            src="@assets/product-card-thumbnail.jpg"
-                            alt=""
-                        />
+                        <img :src="item.image" />
                     </div>
                 </SwiperSlide>
             </Swiper>
