@@ -5,19 +5,27 @@ import InsignificantButton from "@components/insignificant-button.vue";
 import { StoreCardProps } from "@interfaces/store-card";
 
 const props = defineProps<StoreCardProps>();
-const { dark } = toRefs(props);
+const {
+    dark,
+    title = "Product",
+    price,
+    description,
+    thumbnail,
+} = toRefs(props);
 </script>
 
 <template>
     <div :class="{ 'product-card_dark': dark }" class="product-card">
         <div class="product-card__img img">
-            <img src="@assets/product-card-thumbnail.jpg" alt="" />
+            <img v-if="thumbnail" :src="thumbnail" alt="" />
+            <img v-else src="@assets/product/unavailable-img.jpg" alt="" />
         </div>
-        <h3 class="product-card__title item-title">Title</h3>
-        <p class="product-card__price standart-text">4.00$</p>
-        <p class="product-card__description standart-text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
-            fuga veritatis quas praesentium quam tempora?
+        <h3 class="product-card__title item-title">{{ title }}</h3>
+        <p v-show="price" class="product-card__price standart-text">
+            {{ price }}$
+        </p>
+        <p v-show="description" class="product-card__description standart-text">
+            {{ description }}
         </p>
         <div class="product-card__controls">
             <PrimaryButton light>
