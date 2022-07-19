@@ -21,6 +21,7 @@ export default defineConfig({
             "@store": path.resolve(__dirname, "src", "store"),
             "@views": path.resolve(__dirname, "src", "views"),
             "@interfaces": path.resolve(__dirname, "src", "interfaces"),
+            "@services": path.resolve(__dirname, "src", "services"),
         },
     },
     css: {
@@ -28,6 +29,11 @@ export default defineConfig({
             scss: {
                 additionalData: `@import '@scss/global.scss';`,
             },
+        },
+    },
+    server: {
+        proxy: {
+            "/api": "http://localhost:8000",
         },
     },
 });

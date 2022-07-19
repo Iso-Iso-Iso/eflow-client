@@ -1,27 +1,43 @@
 <script lang="ts" setup>
 import ProductSlider from "@components/product-slider.vue";
 import QuantityCounter from "@components/quantity-counter.vue";
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import PrimaryButton from "@components/primary-button.vue";
 import ProductPrice from "@components/product-price.vue";
+import { useRoute } from "vue-router";
+import { useGetSingleProduct } from "@services/product";
+
+const route = useRoute();
+
+const { isLoading, isError, isSuccess, response, getSingleProduct } =
+    useGetSingleProduct();
+
+const productId = route.params.id as string;
+getSingleProduct(productId);
+
+watch(
+    () => productId,
+    (id) => getSingleProduct(id)
+);
 
 const v = ref(1);
 </script>
 <template>
-    <div class="single-product-info">
+    <div v-if="isSuccess" class="single-product-info">
         <div class="product-gallery-slider">
-            <ProductSlider />
+            <ProductSlider :gallery="(response!.gallery)" />
         </div>
         <div class="summary">
+            <h2 class="title">{{ response?.title }}</h2>
             <p class="standart-text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut cum
-                esse eum culpa. Similique dolore perferendis vitae, a iure
-                dolorum reiciendis ullam ratione fugiat nesciunt quos sint
-                harum. Inventore, sit.
+                {{ response?.description }}
             </p>
 
-            <ProductPrice />
-            <QuantityCounter v-model="v" />
+            <ProductPrice
+                :price="+response!.price"
+                :available-quantity="response?.quantity"
+            />
+            <QuantityCounter v-model="v" :max-value="response?.quantity" />
             <PrimaryButton><BIconCart4 /> Add to basket</PrimaryButton>
         </div>
     </div>

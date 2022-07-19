@@ -1,6 +1,9 @@
 export interface StoreCardProps {
     dark?: boolean;
-    src?: string;
+    thumbnail?: string;
     isAvailable?: boolean;
-    path?: string;
+    id?: number;
+    title?: string;
+    price?: number;
+    description?: string;
 }
