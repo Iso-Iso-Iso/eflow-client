@@ -74,7 +74,7 @@ const swiperSetupBreackpoints: SwiperBreackpoints = {
         <div class="prodcut-gallery">
             <Swiper
                 :modules="[Thumbs, Pagination]"
-                :pagination="{ el: swiperPagination }"
+                :pagination="{ el: swiperPagination, type: 'fraction' }"
                 :thumbs="{ swiper: swiperThumbsEntity }"
                 @swiper="onGallerySwiper"
             >
