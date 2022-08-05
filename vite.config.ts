@@ -22,6 +22,7 @@ export default defineConfig({
             "@views": path.resolve(__dirname, "src", "views"),
             "@interfaces": path.resolve(__dirname, "src", "interfaces"),
             "@services": path.resolve(__dirname, "src", "services"),
+            "@utils": path.resolve(__dirname, "src", "utils"),
         },
     },
     css: {

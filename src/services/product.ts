@@ -40,12 +40,9 @@ export function useGetSingleProduct() {
             isLoading.value = true;
             const res = await axios.get("/api/product/" + id);
             response.value = res.data;
-            console.log(response.value);
 
             isSuccess.value = true;
         } catch (e) {
-            console.log(e);
-
             isError.value = true;
         } finally {
             isLoading.value = false;
