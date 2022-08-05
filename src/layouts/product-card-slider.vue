@@ -18,7 +18,11 @@ getProducts();
 <template>
     <div class="card-slider">
         <div class="card-slider__header">
-            <h2 class="card-slider__title title"><slot>Products</slot></h2>
+            <h2
+                class="card-slider__title title text-3xl font-bold text-dark-green"
+            >
+                <slot>Products</slot>
+            </h2>
             <div class="card-slider__controls">
                 <PrimaryButton
                     class="button-slider-prev"
@@ -27,7 +31,7 @@ getProducts();
                     <BIconArrowLeft />
                 </PrimaryButton>
                 <PrimaryButton
-                    class="button-slider-next "
+                    class="button-slider-next"
                     @click="swiper?.slideNext()"
                 >
                     <BIconArrowRight />

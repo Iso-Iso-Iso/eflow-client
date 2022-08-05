@@ -1,16 +1,15 @@
 <script lang="ts" setup>
-import ProductSlider from "@components/product-slider.vue";
-import QuantityCounter from "@components/quantity-counter.vue";
+import ProductSlider from "@/feature/single-shop-page/components/product-slider.vue";
+import QuantityCounter from "@/feature/single-shop-page/components/quantity-counter.vue";
 import { ref, watch } from "vue";
 import PrimaryButton from "@components/primary-button.vue";
-import ProductPrice from "@components/product-price.vue";
+import ProductPrice from "@/feature/single-shop-page/components/product-price.vue";
 import { useRoute } from "vue-router";
 import { useGetSingleProduct } from "@services/product";
 
 const route = useRoute();
 
-const { isLoading, isError, isSuccess, response, getSingleProduct } =
-    useGetSingleProduct();
+const { isSuccess, response, getSingleProduct } = useGetSingleProduct();
 
 const productId = route.params.id as string;
 getSingleProduct(productId);
