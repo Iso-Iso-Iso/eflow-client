@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import ProductCardSlider from "@layouts/product-card-slider.vue";
+import { ProductCardSlider } from "@/feature/product-loop";
 </script>
 
 <template>

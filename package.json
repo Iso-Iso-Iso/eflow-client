@@ -13,6 +13,7 @@
     "pinia": "^2.0.14",
     "swiper": "^8.2.6",
     "vue": "^3.2.25",
+    "vue-query": "^1.25.2",
     "vue-router": "^4.0.16"
   },
   "devDependencies": {

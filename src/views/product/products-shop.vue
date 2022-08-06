@@ -1,14 +1,18 @@
 <script lang="ts" setup>
-import ProductCardGrid from "@layouts/product-card-grid.vue";
-import ProductCard from "@components/product-card.vue";
+import {
+    ProductCardGrid,
+    ProductCard,
+} from "@/feature/product-loop";
 import PagePagination from "@components/page-pagination.vue";
-import { useGetProducts } from "@services/product";
+import { getProductsPagination } from "@services/product";
 import { useRoute } from "vue-router";
 import { watch } from "vue";
+import { useQuery } from "vue-query";
 
-const { isLoading, isError, isSuccess, response, getProducts } =
-    useGetProducts();
-getProducts();
+const { isLoading, isError, isSuccess, data } = useQuery(
+    ["shop", 1],
+    async () => getProductsPagination(1)
+);
 
 const route = useRoute();
 
@@ -23,7 +27,7 @@ watch(
         <div v-if="isSuccess">
             <ProductCardGrid>
                 <ProductCard
-                    v-for="item of response?.products"
+                    v-for="item of data?.products"
                     :id="item.id"
                     :key="item.id"
                     :description="item.description"

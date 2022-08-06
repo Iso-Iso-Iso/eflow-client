@@ -1,18 +1,21 @@
 <script lang="ts" setup>
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation } from "swiper";
-import ProductCard from "@components/product-card.vue";
+import ProductCard from "../components/product-card.vue";
 import PrimaryButton from "@components/primary-button.vue";
 import { ref } from "vue";
 import { Swiper as ISwiper } from "swiper/types";
-import { useGetProducts } from "@services/product";
+import { getProductsPagination } from "@services/product";
+import { useQuery } from "vue-query";
 
 const swiper = ref<ISwiper | null>(null);
-const onSwiper = (swiperState: ISwiper) => (swiper.value = swiperState);
+const onSwiper = (swiperState: ISwiper) =>
+    (swiper.value = swiperState);
 
-const { isLoading, isError, isSuccess, response, getProducts } =
-    useGetProducts();
-getProducts();
+const { isLoading, isError, isSuccess, data } = useQuery(
+    "products",
+    async () => getProductsPagination(1)
+);
 </script>
 
 <template>
@@ -45,7 +48,10 @@ getProducts();
             :space-between="30"
             @swiper="onSwiper"
         >
-            <SwiperSlide v-for="item of response?.products" :key="item.id">
+            <SwiperSlide
+                v-for="item of data?.products"
+                :key="item.id"
+            >
                 <ProductCard
                     :thumbnail="item.gallery[0].image"
                     :title="item.title"
@@ -57,4 +63,8 @@ getProducts();
     </div>
 </template>
 
-<style lang="scss" scoped src="./product-card-slider.scss"></style>
+<style
+    lang="scss"
+    scoped
+    src="./product-card-slider.scss"
+></style>
