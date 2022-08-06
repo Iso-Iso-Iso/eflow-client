@@ -40,9 +40,6 @@
     @media screen and(max-width:510px) {
         margin-bottom: 20px;
     }
-    .swiper-slide {
-        background: gray;
-    }
 }
 
 .active-zoom {
@@ -58,7 +55,6 @@
     &__img {
         width: 75px;
         cursor: pointer;
-        background: gray;
     }
     .swiper-wrapper {
         width: 100%;
