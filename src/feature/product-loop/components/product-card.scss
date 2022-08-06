@@ -2,8 +2,10 @@
     max-width: 285px;
     width: 100%;
     padding: 10px;
+    height: 410px;
     border-radius: 10px;
     background: $primary-color;
+    @include flex(flex-start, stretch, $flex-direction: column);
     @include transition;
     &__img {
         height: 160px;
@@ -23,6 +25,7 @@
     }
     &__description {
         font-weight: $subtitle-weight;
+        flex: 1 1 auto;
     }
     &__controls {
         @include flex(space-between);

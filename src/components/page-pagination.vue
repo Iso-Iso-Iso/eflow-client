@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import InsignificantButton from "@components/insignificant-button.vue";
+
 </script>
 
 <template>

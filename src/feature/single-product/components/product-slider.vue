@@ -2,7 +2,7 @@
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Thumbs, Pagination } from "swiper";
 import { Swiper as SwiperType, SwiperOptions } from "swiper/types";
-import { ref, toRef, watch } from "vue";
+import { ref, toRefs, watch } from "vue";
 import useSliderZoom from "@composables/use-slider-zoom";
 import LabelButtom from "@components/label-button.vue";
 import PrimaryButton from "@components/primary-button.vue";
@@ -15,7 +15,7 @@ const swiperThumbsEntity = ref<SwiperType | null>(null);
 const swiperPagination = ref(null);
 
 const props = defineProps<ProductSliderProps>();
-const gallery = toRef(props, "gallery");
+const { gallery } = toRefs(props);
 
 const onGallerySwiper = (swiper: SwiperType) =>
     (swiperGalleryEntity.value = swiper);
@@ -61,7 +61,7 @@ const swiperSetupBreackpoints: SwiperBreackpoints = {
                 @swiper="onThumbsSwiper"
             >
                 <SwiperSlide v-for="(item, index) of gallery" :key="index">
-                    <div class="product-thumbnails__img img">
+                    <div class="product-thumbnails__img img bg-gray-400">
                         <img :src="item.image" alt="" />
                     </div>
                 </SwiperSlide>
@@ -82,7 +82,7 @@ const swiperSetupBreackpoints: SwiperBreackpoints = {
                     v-for="(item, index) of gallery"
                     ref="imgSlides"
                     :key="index"
-                    class="prodcut-gallery__slide"
+                    class="prodcut-gallery__slide bg-gray-400"
                     @click="isZoomActive = !isZoomActive"
                 >
                     <div class="prodcut-gallery__zoom-container img">
