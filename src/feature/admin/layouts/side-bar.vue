@@ -6,8 +6,18 @@ import SideBarItem from "../components/side-bar-item.vue";
 <template>
     <SideBarWrapper>
         <SideBarItem>
-            <template #title>Test</template>
-            1
+            <template #title>
+                <BIconHouse class="mr-2" />
+                Admin home</template
+            >
+        </SideBarItem>
+        <SideBarItem>
+            <template #title>
+                <BIconBoxSeam class="mr-2" />
+                Products</template
+            >
+            <p>Все продукты</p>
+            <p>Создать продукт</p>
         </SideBarItem>
     </SideBarWrapper>
 </template>

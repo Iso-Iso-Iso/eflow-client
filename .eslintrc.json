@@ -16,7 +16,10 @@
         "no-unused-vars": "warn",
         "no-console": "warn",
         "max-depth": ["error", 2],
-        "no-duplicate-imports": ["error", { "includeExports": false }],
+        "no-duplicate-imports": [
+            "error",
+            { "includeExports": false }
+        ],
         "vue/component-name-in-template-casing": [
             "error",
             "PascalCase",
@@ -25,6 +28,7 @@
                 "ignores": []
             }
         ],
-        "vue/multi-word-component-names": "warn"
+        "vue/multi-word-component-names": "warn",
+        "vue/require-default-prop": "off"
     }
 }

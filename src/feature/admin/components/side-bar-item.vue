@@ -1,17 +1,28 @@
 <script lang="ts" setup>
-import { ref } from "vue";
+import { ref, useSlots } from "vue";
+import { useRouter } from "vue-router";
 
 const isActive = ref(false);
-// TODO! think about spoiler show logic
+const slots = useSlots();
+const props = defineProps({
+    to: Object,
+});
+const router = useRouter();
+
+function onHeaderClick() {
+    if (slots.default) isActive.value = !isActive.value;
+    if (props.to) router.push(props.to);
+}
 </script>
 <template>
-    <div class="p-3">
+    <div class="mb-3">
         <div
             class="flex items-center mb-1 text-dark-green p-3 text-xl font-medium bg-lime-600 rounded-md cursor-pointer hover:bg-lime-500 transition-all duration-200 active:scale-90"
             :class="{ 'bg-yellow-400 hover:bg-amber-300': isActive }"
-            @click="isActive = !isActive"
+            @click="onHeaderClick()"
         >
             <svg
+                v-if="slots.default"
                 xmlns="http://www.w3.org/2000/svg"
                 class="w-5 h-5 mr-1 transition-all duration-200"
                 :class="{ 'rotate-180': isActive }"
@@ -26,7 +37,7 @@ const isActive = ref(false);
         </div>
         <Transition name="drop-menu">
             <div
-                v-if="isActive"
+                v-if="isActive && slots.default"
                 class="h-[100%] overflow-hidden transition-all duration-200 origin-top"
             >
                 <div class="p-3 rounded-md bg-lime-400">
